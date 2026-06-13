@@ -1,0 +1,6 @@
+{
+  "name": "Svalový Atlas",
+  "description": "Interaktivní průvodce anatomií svalů lidského těla s českými názvy, popisem začátků, úponů, pohybů a svalových disbalancí.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
