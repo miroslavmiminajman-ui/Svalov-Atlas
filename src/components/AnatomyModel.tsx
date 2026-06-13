@@ -196,7 +196,7 @@ export default function AnatomyModel({
           /* ANTERIOR (FRONT) VIEW */
           <svg
             viewBox="0 0 240 500"
-            className="w-full h-full max-h-[520px] select-none"
+            className="w-full h-full max-h-[565px] select-none scale-105 sm:scale-110 lg:scale-[1.22] origin-center transition-transform duration-300"
             id="anterior-svg"
           >
             {/* Outline background body silhouette for styling */}
@@ -532,7 +532,7 @@ export default function AnatomyModel({
           /* POSTERIOR (BACK) VIEW */
           <svg
             viewBox="0 0 240 500"
-            className="w-full h-full max-h-[520px] select-none"
+            className="w-full h-full max-h-[565px] select-none scale-105 sm:scale-110 lg:scale-[1.22] origin-center transition-transform duration-300"
             id="posterior-svg"
           >
             {/* Outline body silhouette */}

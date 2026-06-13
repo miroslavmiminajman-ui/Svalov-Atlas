@@ -20,7 +20,8 @@ import {
   BookOpen,
   Timer,
   CheckCircle2,
-  Activity
+  Activity,
+  Search
 } from 'lucide-react';
 
 interface MuscleDetailProps {
@@ -70,7 +71,7 @@ export default function MuscleDetail({
 
   return (
     <div 
-      className="bg-[#0F0F11] rounded-2xl border border-[#27272A] p-6 shadow-xl text-[#E4E4E7] flex flex-col gap-6"
+      className="bg-[#0F0F11] rounded-2xl border border-[#27272A] p-6 shadow-xl text-[#E4E4E7] flex flex-col gap-6 scroll-mt-24"
       id={`detail-${muscle.id}`}
     >
       {/* Detail Header */}
@@ -90,18 +91,38 @@ export default function MuscleDetail({
           <p className="text-xs text-[#71717A] font-mono italic">{muscle.nameLa}</p>
         </div>
 
-        {/* Compare / Action button */}
-        {onAddToCompare && !isComparing && (
+        {/* Action Buttons Area */}
+        <div className="flex flex-wrap items-center gap-2 self-start sm:self-start">
           <button
-            onClick={() => onAddToCompare(muscle)}
-            className="self-start px-3 py-1.5 bg-[#1C1C1F] hover:bg-cyan-500 hover:text-black active:bg-cyan-600 text-xs text-[#D4D4D8] rounded border border-[#27272A] hover:border-transparent transition flex items-center gap-1.5 font-semibold shadow"
-            title="Přidat do srovnávače svalů"
-            id={`btn-add-compare-${muscle.id}`}
+            onClick={() => {
+              const searchInput = document.getElementById('muscle-search-input');
+              if (searchInput) {
+                searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => {
+                  searchInput.focus({ preventScroll: true });
+                }, 500);
+              }
+            }}
+            className="px-3 py-1.5 bg-[#1C1C1F] hover:bg-[#27272A] text-xs text-cyan-400 rounded border border-cyan-500/25 hover:border-cyan-400 transition flex items-center gap-1.5 font-semibold shadow cursor-pointer select-none"
+            title="Sjet nahoru k vyhledávání"
+            id="btn-back-to-search-detail"
           >
-            <RefreshCw size={12} className="shrink-0" />
-            Srovnat s jiným
+            <Search size={12} className="shrink-0 text-cyan-400" />
+            Zpět k vyhledávání
           </button>
-        )}
+
+          {onAddToCompare && !isComparing && (
+            <button
+              onClick={() => onAddToCompare(muscle)}
+              className="px-3 py-1.5 bg-[#1C1C1F] hover:bg-cyan-500 hover:text-black active:bg-cyan-600 text-xs text-[#D4D4D8] rounded border border-[#27272A] hover:border-transparent transition flex items-center gap-1.5 font-semibold shadow cursor-pointer select-none"
+              title="Přidat do srovnávače svalů"
+              id={`btn-add-compare-${muscle.id}`}
+            >
+              <RefreshCw size={12} className="shrink-0" />
+              Srovnat s jiným
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Anatomického Upnutí Nákres */}
